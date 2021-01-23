@@ -1,0 +1,163 @@
+I) Console Application
+
+1) Person klassı yaradın:
+
+string Name
+int Age
+
+Daha sonra PersonManager klassı yaradın:
+Person obyektlərini yaddaşda saxlamaq üçün List yaradın.
+
+2) İstifadəçi üçün konsolda menyu açılsın:
+
+1. Əlavə et
+2. Search et (Edit & Delete)
+3. Save et
+4. Load et
+5. Export et
+6. Display et
+7. Exit
+
+Rəqəmlərə əsasən əməliyyatlar yerinə yetirilməlidir:
+
+1: Person obyekti yaradılsın: obyektlərin içi istifadəçi tərəfindən konstruktorla doldurulur və list-də saxlanılır.
+2: Nəyə görə search edilsin deyə soruşulur:
+
+a) ada görə
+b) yaşa görə
+
+Daha sonra istifadəçi ad və ya yaşı göstərərək search edir.
+Search-ə uyğun gələn bütün person obyektləri list-dən seçilib print edilsin. Məsələn:
+
+List-də var:
+
+Akif, 27
+Teymur, 50
+Tərlan, 68
+Akif, 44
+Gülnarə, 27
+
+list.Where(person => person.Name == name);
+
+İstifadəçi yaşa görə axtarış edib, 27 yazarsa:
+
+1) Akif, 27
+2) Gülnarə, 27
+
+İstifadəçi ada görə axtarış edib, "Akif" yazarsa:
+
+1) Akif, 27
+2) Akif, 44
+
+Search result-ın qabağında olan rəqəmə görə istifadəçi person seçə bilər. Daha sonra yeni menyu açılır:
+
+1) Edit et
+2) Delete et
+
+Delete et seçilərsə, həmin obyekt list-dən silinir.
+Edit et seçilərsə, istifadəçidən nəyi edit edəcəyi soruşulur:
+
+a) adı
+b) yaşı
+
+Seçimə görə yeni value yazmaq istənilir və edit edilir, misal üçün:
+
+ada görə:
+
+Yeni ad daxil edin:
+Rüstəm
+
+Artıq list-dəki Akif, dəyişib Rüstəm olur. Eyni prinsip yaşa da aiddir.
+
+List-də saxlanılan obyektlər proqram bitdikdən sonra silinir deyə, state-i saxlamaq üçün save etmək lazımdır.
+
+3: Bütün listdəki obyektlər serializasiya olunub .dat və ya .bin faylında saxlanılsın. 
+Bunun üçün avtomatik folder yaradılsın (əgər yoxdursa!): 
+adı "Saved-bugünün tarixi olsun", lakin tarixlər arası iki tire olsun, misal üçün:
+
+Saved-08--01--2021
+
+Faylın isə adını istifadəçi özü qoysun. 
+Eyniadda fayl olarsa istifadəçiyə xəbərdarlıq gəlsin və override etmək istəyir mi soruşulsun? y/n
+Cavabdan aslı olaraq ya fayl override edilsin ya da istifadəçi yeni ad yazsın.
+Fayl az öncə yaradılan folder-də save olunmalıdır.
+
+4: Load et olunarkən istifadəçidən seçim istənilsin:
+
+Cari list-də olan elementlər load olunan obyektlərlə override olunsun 
+yoxsa load olunan elementlər list-ə əlavə edilsin? 
+
+a) üstündən yaz (override)
+b) əlavə et
+
+Cavabdan aslı olaraq məntiq yazılsın: load olunacaq faylın adı istənilsin. 
+Faylın adına uyğun .dat və ya .bin faylı tapılıb load edilir: 
+müxtəlif tarixlərdə save olunan folder-i avtomatik parse edib həmin faylı tapmaq lazımdır.
+Əgər eyniadda bir neçə fayl olarsa, hər biri ekrana çıxsın, lakin qarşısında tarixi ilə:
+
+1) persons.dat 06.01.2021
+2) persons.dat 08.01.2021
+
+İstifadəçi seçim edir və list-dəki bütün elementlər istifadəçinin seçiminə uyğun 
+ya load edilən obyektlərlə əvəz olur ya da yeni elementlər list-də olanların yanına əlavə edilir.
+Deserializasiya etməyi unutmayın!
+
+5: Export edərkən istifadəçidən hansı formatda export olunsun soruşulsun:
+
+1) Text
+2) Excel
+
+Seçimə uyğun list-dəki bütün person obyektləri haqda məlumatlar ya .txt fayla ya da excel-ə köçürülsün.
+
+.txt köçürülərsə aşağıdaki formatda olsun:
+
+Adı: Akif 
+Yaşı: 27
+
+===
+
+Adı: Zeyn
+Yaşı: 55
+
+===
+
+Exceldə isə:
+
+Name və Age column-ları olsun. Alt-alta bütün məlumatlar yazılsın:
+
+Name     Age
+Akif     27
+Zeyn     55
+
+Bunun üçün avtomatik folder yaradılsın (əgər yoxdursa!): 
+adı "Exported-bugünün tarixi olsun", lakin tarixlər arası iki tire olsun, misal üçün:
+
+Exported-08--01--2021
+
+Faylın isə adını istifadəçi özü qoysun. 
+Eyniadda fayl olarsa istifadəçiyə xəbərdarlıq gəlsin və override etmək istəyir mi soruşulsun? y/n
+Cavabdan aslı olaraq ya fayl override edilsin ya da istifadəçi yeni ad yazsın.
+Fayl az öncə yaradılan folder-də save olunmalıdır.
+
+6: List-dəki elementləri ekrana çap et.
+7: Proqramdan çıxsın.
+
+Hər əməliyyat bitdikdən sonra yenidən menyu açılsın və istifadəçidən yeni əməliyyat seçməsi istənilsin.
+
+EXTRA: 
+A) "Export et" bölməsinə FTP Server əlavə edilsin:
+İstifadəçi FTP Server seçərsə, o zaman list .bin və ya .dat faylına serializasiya olmalıdır.
+Daha sonra ftp məlumatlar istifadəçi tərəfindən proqrama təqdim edilir:
+
+host, username, password etc.
+
+...və fayl serverə yüklənir.
+
+B) "Load et" bölməsində istifadəçiyə haradan load ediləcəyi soruşulsun:
+
+1) lokal folder-dən
+2) Remote server-dən
+
+1 seçilərkən əvvəlki məntiq işə düşsün, 2 seçilərsə ftp məlumatlar istifadəçi tərəfindən proqrama təqdim edilsin.
+Lokal folder-dən load etmək məntiqi üsütündə (adlar eyni olarsa tarixi göstərilsin və s.) 
+fayllar serverdən download edilsin və user-ə təqdim edilsin :)
